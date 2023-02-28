@@ -41,7 +41,6 @@
             this.labelPercentComplete = new System.Windows.Forms.Label();
             this.buttonReport = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,18 +55,19 @@
             this.JurisLogoImageBox.Image = ((System.Drawing.Image)(resources.GetObject("JurisLogoImageBox.Image")));
             this.JurisLogoImageBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("JurisLogoImageBox.InitialImage")));
             this.JurisLogoImageBox.Location = new System.Drawing.Point(0, 1);
-            this.JurisLogoImageBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.JurisLogoImageBox.Margin = new System.Windows.Forms.Padding(4);
             this.JurisLogoImageBox.Name = "JurisLogoImageBox";
             this.JurisLogoImageBox.Size = new System.Drawing.Size(104, 336);
             this.JurisLogoImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.JurisLogoImageBox.TabIndex = 0;
             this.JurisLogoImageBox.TabStop = false;
+            this.JurisLogoImageBox.Click += new System.EventHandler(this.JurisLogoImageBox_Click);
             // 
             // LexisNexisLogoPictureBox
             // 
             this.LexisNexisLogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("LexisNexisLogoPictureBox.Image")));
             this.LexisNexisLogoPictureBox.Location = new System.Drawing.Point(11, 422);
-            this.LexisNexisLogoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LexisNexisLogoPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.LexisNexisLogoPictureBox.Name = "LexisNexisLogoPictureBox";
             this.LexisNexisLogoPictureBox.Size = new System.Drawing.Size(96, 28);
             this.LexisNexisLogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -97,7 +97,7 @@
             this.listBoxCompanies.FormattingEnabled = true;
             this.listBoxCompanies.ItemHeight = 16;
             this.listBoxCompanies.Location = new System.Drawing.Point(148, 1);
-            this.listBoxCompanies.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxCompanies.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxCompanies.Name = "listBoxCompanies";
             this.listBoxCompanies.Size = new System.Drawing.Size(348, 84);
             this.listBoxCompanies.TabIndex = 0;
@@ -119,9 +119,9 @@
             this.statusGroupBox.Controls.Add(this.progressBar);
             this.statusGroupBox.Controls.Add(this.labelPercentComplete);
             this.statusGroupBox.Location = new System.Drawing.Point(148, 95);
-            this.statusGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.statusGroupBox.Name = "statusGroupBox";
-            this.statusGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.statusGroupBox.Size = new System.Drawing.Size(716, 90);
             this.statusGroupBox.TabIndex = 5;
             this.statusGroupBox.TabStop = false;
@@ -140,7 +140,7 @@
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(9, 33);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(692, 25);
             this.progressBar.TabIndex = 0;
@@ -161,7 +161,7 @@
             this.buttonReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReport.ForeColor = System.Drawing.Color.MidnightBlue;
             this.buttonReport.Location = new System.Drawing.Point(667, 395);
-            this.buttonReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonReport.Margin = new System.Windows.Forms.Padding(4);
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Size = new System.Drawing.Size(197, 47);
             this.buttonReport.TabIndex = 16;
@@ -175,7 +175,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button1.Location = new System.Drawing.Point(161, 395);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 47);
             this.button1.TabIndex = 17;
@@ -183,26 +183,13 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(300, 196);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(318, 32);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "This utility Replaces Task Codes for unbilled\r\n         time based on an Excel sp" +
-    "readsheet";
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LightGray;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button2.Location = new System.Drawing.Point(408, 250);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(197, 80);
             this.button2.TabIndex = 19;
@@ -236,7 +223,6 @@
             this.ClientSize = new System.Drawing.Size(877, 487);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.statusGroupBox);
@@ -248,7 +234,7 @@
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UtilityBaseMain";
@@ -280,7 +266,6 @@
         private System.Windows.Forms.Label labelPercentComplete;
         private System.Windows.Forms.Button buttonReport;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label2;

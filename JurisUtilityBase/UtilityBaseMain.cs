@@ -114,7 +114,6 @@ namespace JurisUtilityBase
                 toolStripStatusLabel.Text = "Running. Please Wait...";
                 getNumberSettings();
                 glAcct = testGLAcct();
-                glAcct = 321;
                 if (glAcct == 0)
                 {
                     MessageBox.Show("No GL Account can be found with number 9313-000. The tool cannot continue", "GL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -192,12 +191,20 @@ namespace JurisUtilityBase
                             _jurisUtility.ExecuteSql(0, sql);
 
                             //(select chtsysnbr from chartofaccounts where dbo.jfn_FormatChartOfAccount(ChartOfAccounts.ChtSysNbr) = '9313-000')
-
+                            sql = @"  insert into [DocumentTree] ([DTDocID] ,[DTSystemCreated] ,[DTDocClass] ,[DTDocType] ,[DTParentID] ,[DTTitle] ,[DTKeyL], [dtkeyt])
+                          select (select max(dtdocid) from documenttree) + 1, 'Y', 7000,'R',66, left(venname, 30), vensysnbr, null
+                          from vendor where vencode = '" + formatVendorCode(zz.num) + "'";
+                            _jurisUtility.ExecuteSql(0, sql);
                         }
 
                     }
 
-                    UpdateStatus("All Task codes updated.", 1, 1);
+                    //update sysparam
+                    string ss = @"  update [SysParam] set SpNbrValue = (select max(dtdocid) from documenttree)
+                                where SpName = 'LastSysNbrVendor '";
+                    _jurisUtility.ExecuteSql(0, ss);
+
+                    UpdateStatus("All Vendors created.", 1, 1);
                     toolStripStatusLabel.Text = "Status: Ready to Execute";
 
                     if (errors == 0)
@@ -234,7 +241,6 @@ namespace JurisUtilityBase
             }
 
             string[] test = cell.Split(',');
-
 
             if (test[1].Equals("C"))
                 codeIsNumeric = false;
@@ -538,8 +544,23 @@ namespace JurisUtilityBase
             } 
         }
 
-
-
-
+        private void JurisLogoImageBox_Click(object sender, EventArgs e)
+        {
+           DialogResult dr =  MessageBox.Show("This will remove the problem vendors. Continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                getNumberSettings();
+                List<string> vens = new List<string>();
+                for (int i = 730001; i < 730106; i++)
+                    vens.Add(i.ToString());
+                string sql = "";
+                foreach (string ven in vens)
+                {
+                    sql = @"delete from vendor where vencode = '" + formatVendorCode(ven) + "'";
+                    _jurisUtility.ExecuteSql(0, sql);
+                }
+                MessageBox.Show("Done. Use the tool like normal now.");
+             }
+        }
     }
 }
