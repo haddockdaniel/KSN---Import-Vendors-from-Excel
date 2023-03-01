@@ -195,6 +195,8 @@ namespace JurisUtilityBase
                           select (select max(dtdocid) from documenttree) + 1, 'Y', 7000,'R',66, left(venname, 30), vensysnbr, null
                           from vendor where vencode = '" + formatVendorCode(zz.num) + "'";
                             _jurisUtility.ExecuteSql(0, sql);
+
+
                         }
 
                     }
@@ -202,6 +204,10 @@ namespace JurisUtilityBase
                     //update sysparam
                     string ss = @"  update [SysParam] set SpNbrValue = (select max(dtdocid) from documenttree)
                                 where SpName = 'LastSysNbrVendor '";
+                    _jurisUtility.ExecuteSql(0, ss);
+
+                    ss = @"update sysparam
+                    set spnbrvalue=(select max(dtdocid) from documenttree) where spname='LastSysNbrDocTree'";
                     _jurisUtility.ExecuteSql(0, ss);
 
                     UpdateStatus("All Vendors created.", 1, 1);
@@ -546,21 +552,7 @@ namespace JurisUtilityBase
 
         private void JurisLogoImageBox_Click(object sender, EventArgs e)
         {
-           DialogResult dr =  MessageBox.Show("This will remove the problem vendors. Continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
-            {
-                getNumberSettings();
-                List<string> vens = new List<string>();
-                for (int i = 730001; i < 730106; i++)
-                    vens.Add(i.ToString());
-                string sql = "";
-                foreach (string ven in vens)
-                {
-                    sql = @"delete from vendor where vencode = '" + formatVendorCode(ven) + "'";
-                    _jurisUtility.ExecuteSql(0, sql);
-                }
-                MessageBox.Show("Done. Use the tool like normal now.");
-             }
+
         }
     }
 }
